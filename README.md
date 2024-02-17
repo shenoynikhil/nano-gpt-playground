@@ -17,8 +17,6 @@ pip install -r requirements.txt
 #### Data
 Running the python file will download the preprocess the data for the character-level language model training.
 
-Usage
 ```bash
-# for downloading and preprocessing the data
 python data/prepare_data.py
 ```
