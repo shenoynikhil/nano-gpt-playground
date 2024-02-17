@@ -17,3 +17,7 @@ To run the code, you can use the following command,
 ```bash
 python model.py
 ```
+
+#### Core Ideas:
+- The use of `torch.tril` and matrix multiplication to ensure autoregressive property for the decoder block. This property is not needed for the encoder block of a transformer.
+- TODO: Add more details here.
