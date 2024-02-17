@@ -50,7 +50,7 @@ class MultiHeadAttention(nn.Module):
         self.key_layer = nn.Linear(n_embd, head_dim, bias=False)
         self.query_layer = nn.Linear(n_embd, head_dim, bias=False)
         self.value_layer = nn.Linear(n_embd, head_dim, bias=False)
-        self.register_buffer('tril', torch.tril(torch.ones(block_size, block_size)))
+        self.register_buffer('tril', torch.tril(torch.ones(block_size, block_size)).view(1, 1, block_size, block_size))
 
         self.proj = nn.Linear(head_dim, head_dim)
         self.dropout = nn.Dropout(dropout)
@@ -68,7 +68,7 @@ class MultiHeadAttention(nn.Module):
 
         # compute attention matrix
         wei = torch.einsum('ijkl,ijlm->ijkm', q, k.transpose(-2, -1)) * C ** (-0.5) # (B, H, T, T)
-        wei = wei.masked_fill(self.tril[:T, :T] == 0, float("-inf"))
+        wei = wei.masked_fill(self.tril[:, :, :T, :T] == 0, float("-inf"))
         wei = F.softmax(wei, dim=-1) # (B, T, T)
         wei = self.dropout(wei)
 
