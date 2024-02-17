@@ -1,9 +1,6 @@
 ## Nano-GPT Implementation
 
-This is based off Andrej Karpathy's [Nano-GPT implementation](https://github.com/karpathy/nanoGPT?tab=readme-ov-file).
-
-
-### Setup
+Just playing around with Andrej Karpathy's [Nano-GPT implementation](https://github.com/karpathy/nanoGPT).
 
 #### Environment
 To setup the environment, you will need conda,
